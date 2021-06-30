@@ -15,6 +15,17 @@
                         <a href="#" class="primary-btn">Add to cart</a>
                     </div>
                 </div>
+
+                <!-- if products emplty then display a message -->
+                <div *ngIf="products?.length == 0" class="alert alert-warning col-md-12" role="alert">
+                    No Products found.
+                </div>
+
+                <!-- 
+                    1) ? = safe navigation operator.
+                    2) role alert = will provide a accesssibility, extra information to assistive technology such as screen readers  
+                -->
+
             </div>
         </div>
     </div>
