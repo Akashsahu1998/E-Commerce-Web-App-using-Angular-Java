@@ -1,9 +1,6 @@
 <div class="main-content">
     <div class="section-content section-content-p30">
 
-        <h4>Category: {{ currentCategoryName }}</h4>
-        <hr>
-
         <div class="container-fluid">
             <div class="row">
                 <!-- loop over the collection of products -->
@@ -18,7 +15,7 @@
 
                 <!-- if products emplty then display a message -->
                 <div *ngIf="products?.length == 0" class="alert alert-warning col-md-12" role="alert">
-                    No Products found.
+                    No Products found !
                 </div>
 
                 <!-- 
