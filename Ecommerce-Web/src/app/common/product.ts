@@ -8,4 +8,5 @@ export class Product {
     unitsInStock: number;
     dateCreated: Date;
     lastUpdated: Date;
+    id: number;
   }
