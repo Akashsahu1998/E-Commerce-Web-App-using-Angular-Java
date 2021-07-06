@@ -9,7 +9,7 @@ import { ProductCategory } from '../common/product-category';
   providedIn: 'root'
 })
 export class ProductService {
-  
+
   private baseUrl = 'http://localhost:8080/api/products';
   private categoryUrl = 'http://localhost:8080/api/product-category';
 
@@ -19,7 +19,7 @@ export class ProductService {
 
     // need to build an URL based on category ID, page and size
     const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${categoryId}`
-                    + `&page=${pageNumber}&size=${pageSize}`;
+      + `&page=${pageNumber}&size=${pageSize}`;
 
     return this.httpClient.get<GetResponseProducts>(searchUrl);
   }
@@ -40,6 +40,14 @@ export class ProductService {
     return this.getProducts(searchUrl);
   }
 
+  searchProductsPaginate(pageNumber: number, pageSize: number, keyword: string): Observable<GetResponseProducts> {
+
+    // need to build an URL based on keyword, page and size
+    const searchUrl = `${this.baseUrl}/search/findByNameContaining?name=${keyword}` + `&page=${pageNumber}&size=${pageSize}`;
+
+    return this.httpClient.get<GetResponseProducts>(searchUrl);
+  }
+
   private getProducts(searchUrl: string): Observable<Product[]> {
     return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(
       map(response => response._embedded.products)
@@ -54,7 +62,7 @@ export class ProductService {
   }
 
   getProduct(productId: number): Observable<Product> {
-    
+
     // need to build URL based on the product Id
     const productUrl = `${this.baseUrl}/${productId}`;
 
