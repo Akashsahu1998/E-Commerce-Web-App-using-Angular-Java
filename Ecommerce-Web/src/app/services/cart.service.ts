@@ -5,7 +5,7 @@ import { CartItem } from '../common/cart-item';
 @Injectable({
   providedIn: 'root'
 })
-export class CartService {
+export class CartService {  
 
   cartItems: CartItem[] = [];
 
@@ -69,5 +69,28 @@ export class CartService {
 
     console.log("totalprice : " + totalPriceValue.toFixed(2) + "  totalquantity : " + totalQuantitytValue);
     console.log("-----");
+  }
+
+  decrementQuantity(cartItem: CartItem) {
+    cartItem.quantity--;
+
+    if(cartItem.quantity === 0){
+      this.remove(cartItem);
+    }
+    else{
+      this.computeCartTotals();
+    }
+  }
+
+  remove(cartItem: CartItem){
+    
+    // get index of item in the array
+    const itemIndex = this.cartItems.findIndex(tempCartItem => tempCartItem.id === cartItem.id)
+
+    // if found, remove the item from the array at the given index
+    if(itemIndex > -1){
+      this.cartItems.splice(itemIndex, 1);
+      this.computeCartTotals();
+    }
   }
 }
