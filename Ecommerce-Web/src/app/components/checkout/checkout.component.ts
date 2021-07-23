@@ -8,13 +8,13 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class CheckoutComponent implements OnInit {
 
-  checkoutFormGroup: FormGroup
+  checkoutFormGroup: FormGroup;
 
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.checkoutFormGroup = this.formBuilder.group({
-      custoemr: this.formBuilder.group({
+      customer: this.formBuilder.group({
         firstName: [''],
         lastName: [''],
         email: ['']
@@ -22,4 +22,9 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
+  onSubmit(){
+    console.log("Handling");
+    console.log(this.checkoutFormGroup.get('customer')!.value);
+    console.log(this.checkoutFormGroup.get('customer')!.value.email);
+  }
 }
