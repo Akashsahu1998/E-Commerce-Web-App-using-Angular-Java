@@ -11,7 +11,7 @@
                         </div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <input formControlName="firstName" type="text"/>
+                                <input formControlName="firstName" type="text" />
                             </div>
                         </div>
                     </div>
@@ -22,7 +22,7 @@
                         </div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <input formControlName="lastName" type="text"/>
+                                <input formControlName="lastName" type="text" />
                             </div>
                         </div>
                     </div>
@@ -33,12 +33,11 @@
                         </div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <input formControlName="email" type="text"/>
+                                <input formControlName="email" type="text" />
                             </div>
                         </div>
                     </div>
                 </div>
-
 
                 <!-- Shipping Address form group -->
                 <div formGroupName="shippingAddress" class="form-area">
@@ -50,7 +49,9 @@
                         <div class="col-md-9">
                             <div class="input-space">
                                 <select formControlName="country">
-                                    <option>To Do</option>
+                                    <option *ngFor="let country of countries" [ngValue]="country">
+                                        {{ country.name }}
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -62,7 +63,7 @@
                         </div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <input formControlName="street" type="text"/>
+                                <input formControlName="street" type="text" />
                             </div>
                         </div>
                     </div>
@@ -73,7 +74,7 @@
                         </div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <input formControlName="city" type="text"/>
+                                <input formControlName="city" type="text" />
                             </div>
                         </div>
                     </div>
@@ -97,21 +98,20 @@
                         </div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <input formControlName="zipCode" type="text"/>
+                                <input formControlName="zipCode" type="text" />
                             </div>
                         </div>
                     </div>
                 </div>
 
-
                 <!-- Add check box to copy shipping address to billing address -->
                 <div class="input-space">
                     <label class="au-checkbox">
-                        <input type="checkbox" (change)="copyShippingAddressToBillingAddress($event)">
-                        <span class="au-checkmark"></span>Billing Address same as Shipping Address
+                        <input type="checkbox" (change)="copyShippingAddressToBillingAddress($event)" />
+                        <span class="au-checkmark"></span>Billing Address same as Shipping
+                        Address
                     </label>
-                </div>                
-
+                </div>
 
                 <!-- Billing Address form group -->
                 <div formGroupName="billingAddress" class="form-area">
@@ -123,7 +123,9 @@
                         <div class="col-md-9">
                             <div class="input-space">
                                 <select formControlName="country">
-                                    <option>To Do</option>
+                                    <option *ngFor="let country of countries" [ngValue]="country">
+                                        {{ country.name }}
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -135,7 +137,7 @@
                         </div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <input formControlName="street" type="text"/>
+                                <input formControlName="street" type="text" />
                             </div>
                         </div>
                     </div>
@@ -146,7 +148,7 @@
                         </div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <input formControlName="city" type="text"/>
+                                <input formControlName="city" type="text" />
                             </div>
                         </div>
                     </div>
@@ -170,18 +172,16 @@
                         </div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <input formControlName="zipCode" type="text"/>
+                                <input formControlName="zipCode" type="text" />
                             </div>
                         </div>
                     </div>
                 </div>
 
-
-
                 <!-- Credit Card form group -->
                 <div formGroupName="creditCard" class="form-area">
                     <h3>Credit Card</h3>
-                    
+
                     <div class="row">
                         <div class="col-md-2">
                             <label>Card Type</label>
@@ -202,7 +202,7 @@
                         </div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <input formControlName="nameOnCard" type="text"/>
+                                <input formControlName="nameOnCard" type="text" />
                             </div>
                         </div>
                     </div>
@@ -213,7 +213,7 @@
                         </div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <input formControlName="cardNumber" type="text"/>
+                                <input formControlName="cardNumber" type="text" />
                             </div>
                         </div>
                     </div>
@@ -224,7 +224,7 @@
                         </div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <input formControlName="securityCode" type="text"/>
+                                <input formControlName="securityCode" type="text" />
                             </div>
                         </div>
                     </div>
@@ -253,14 +253,12 @@
                                 <select formControlName="expirationYear" (change)="handleMonthsAndYears()">
                                     <option *ngFor="let year of creditCardYears">
                                         {{ year }}
-                                    </option>                        
+                                    </option>
                                 </select>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
 
                 <!-- Order Details -->
                 <div class="form-area">
@@ -268,9 +266,8 @@
 
                     <p>Total Quantity: {{ totalQuantity }}</p>
                     <p>Shipping: Free</p>
-                    <p>Total Price: {{ totalPrice | currency: 'USD' }}</p>
+                    <p>Total Price: {{ totalPrice | currency: "USD" }}</p>
                 </div>
-
 
                 <!-- submit button -->
                 <div class="text-center">
