@@ -85,16 +85,23 @@ export class CheckoutComponent implements OnInit {
     if (event.target.checked) {
       this.checkoutFormGroup.controls.billingAddress
         .setValue(this.checkoutFormGroup.controls.shippingAddress.value);
+
+      this.billingAddressStates = this.shippingAddressStates;
     }
     else {
       this.checkoutFormGroup.controls.billingAddress.reset();
+
+      this.billingAddressStates = [];
     }
   }
 
   onSubmit() {
-    console.log("Handling");
+    console.log("Handling the submti button");
     console.log(this.checkoutFormGroup.get('customer')!.value);
-    console.log(this.checkoutFormGroup.get('customer')!.value.email);
+    console.log("The email address is ", this.checkoutFormGroup.get('customer')!.value.email);
+
+    console.log("The shippping address country is ", this.checkoutFormGroup.get('shippingAddress')!.value.country.name);
+    console.log("The shippping address state is ", this.checkoutFormGroup.get('shippingAddress')!.value.state.name);
   }
 
   handleMonthsAndYears() {
@@ -126,8 +133,8 @@ export class CheckoutComponent implements OnInit {
     const countryCode = formGroup?.value.country.code;
     const countryName = formGroup?.value.country.name;
 
-    console.log("countryCode", countryCode);
-    console.log("countryName", countryName);
+    console.log(`${formGroupName} countryCode : ${countryCode}`);
+    console.log(`${formGroupName} countryName : ${countryName}`);
 
     this.shopFormService.getStates(countryCode).subscribe(data => {
       if (formGroupName === 'shippingAddress') {
