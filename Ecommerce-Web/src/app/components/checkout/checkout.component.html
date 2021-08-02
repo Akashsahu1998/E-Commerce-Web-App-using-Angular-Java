@@ -5,6 +5,9 @@
                 <!-- customer form group -->
                 <div formGroupName="customer" class="form-area">
                     <h3>Customer</h3>
+
+                    <!-- First Name -->
+
                     <div class="row">
                         <div class="col-md-2">
                             <label>First Name</label>
@@ -12,6 +15,19 @@
                         <div class="col-md-9">
                             <div class="input-space">
                                 <input formControlName="firstName" type="text" />
+
+                                <!-- Dirty : A control is dirty if the user has changed the value in the UI. -->
+
+                                <div *ngIf="firstName?.invalid && (firstName?.dirty || firstName?.touched)"
+                                 class="alert alert-danger mt-1">
+                                    <div *ngIf="firstName?.errors?.required">
+                                        First Name is required
+                                    </div>
+
+                                    <div *ngIf="firstName?.errors?.minlength">
+                                        First Name must be at least 2 characters long
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
