@@ -39,13 +39,4 @@ public class OrderItem {
 	@ManyToOne
 	@JoinColumn(name = "order_id")
 	private Order order;
-
-	public Order getOrder() {
-		return order;
-	}
-
-	public void setOrder(Order order) {
-		this.order = order;
-	}
-
 }
