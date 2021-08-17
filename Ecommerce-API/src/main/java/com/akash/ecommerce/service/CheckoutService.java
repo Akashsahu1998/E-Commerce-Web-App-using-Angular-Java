@@ -4,5 +4,5 @@ import com.akash.ecommerce.dto.Purchase;
 import com.akash.ecommerce.dto.PurchaseResponse;
 
 public interface CheckoutService {
-	PurchaseResponse placeHolder(Purchase purchase);
+	PurchaseResponse placeOrder(Purchase purchase);
 }

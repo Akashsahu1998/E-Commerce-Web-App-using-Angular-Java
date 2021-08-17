@@ -25,7 +25,7 @@ public class CheckoutServiceImpl implements CheckoutService {
 
 	@Override
 	@Transactional
-	public PurchaseResponse placeHolder(Purchase purchase) {
+	public PurchaseResponse placeOrder(Purchase purchase) {
 
 		// retrieve the order info from dto
 		Order order = purchase.getOrder();
